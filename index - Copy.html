@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>    
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class Game extends React.Component{
+        render() {
+          return (
+            <div>
+              <h1>Game {this.props.name}</h1>
+              <h3>{this.props.age}</h3>
+            </div>
+          )
+        }
+      }
+
+      const root = document.getElementById('root');
+
+      ReactDOM.render(
+        <div>
+          <Game name='CS GO' age='18+'/>
+          <Game name='Mortal combat' age='21+'/>
+          <Game name='Tetris' age='3+'/>
+        </div>
+        ,
+        root
+      );
+
+    </script>
+    
+    
+  </body>
+</html>

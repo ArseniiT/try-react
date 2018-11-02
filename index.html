@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>    
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="program"></div>
+
+<script type="text/babel">
+
+  class Check extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {checked: true};
+    };
+
+    handleCheck = () => {
+      this.setState({checked: !this.state.checked});
+    };
+
+    render() {   
+
+      let message;
+      if (this.state.checked) {
+        message = 'selected';
+      } else {
+        message = 'not selected';
+      }
+
+
+      return (
+        <div>
+          <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}  />
+          <p>Our checkbox {message}</p>
+        </div>
+      );
+    }
+  }
+
+  class Task extends React.Component {
+    constructor(props){
+      super(props);
+    }
+
+    edit = () => {
+      alert('Button edit pushed');
+    }
+    remove=() => {
+      alert('Button remove pushed');
+    }
+
+
+    render(){
+    
+      return(
+        <div className="col-sm-3">
+          <div className='card' >
+            <img className="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD4-LcA2kyEAFHE3_YI-U3Dw2xYc_JS6BVVkmJhANV9D53iBIt" alt="Card image cap"/>
+            <div className="card-body">
+              <h5 className="card-title">{this.props.children}</h5>
+              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <button onClick={this.edit} className="btn btn-primary">Edit</button>
+              <button onClick={this.remove} className="btn btn-primary">Remove</button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
+
+  const app = document.getElementById("program");
+  ReactDOM.render (
+        <div className='container' >
+          <Check/>
+          <div className="row">
+            <Task children='User1'/>        
+            <Task children='User2'/>        
+            <Task children='User3'/>        
+            <Task children='User4'/>        
+          </div>        
+        </div>        
+        ,app
+  );
+</script>
+    
+    
+  </body>
+</html>
